@@ -1,5 +1,8 @@
 const router = require("express").Router()
-//const home=require('../public/')
-router.get('/',)
+const path=require('path')
+router.get('/',(req,res)=>{
+    
+   path.dirname('')
+})
 
 module.exports=router
