@@ -23,7 +23,6 @@ router.get("/api/workouts", (req, res) => {
 // const dbData=await db.Workout.findOne({})
 // })
 router.put("/api/workouts/:id", ( req, res) => {
-    // Find a workout document by id and add the new exercise to the array of exercises
     db.Workout.findOneAndUpdate({ _id: req.params.id }, { $push: { exercises: req.body } })
       .then(dbWorkout => {
 
@@ -54,7 +53,7 @@ router.get('/api/workouts/range',(req,res)=>{
           $addFields: { totalDuration: { $sum: "$exercises.duration" } }
         },
       ])
-      .sort({ day: 1 })
+      .sort({ day: -1 })
       .then(workouts => {
         const lastSevenWorkouts = workouts.slice(0,7)
         res.json(lastSevenWorkouts);
@@ -63,4 +62,5 @@ router.get('/api/workouts/range',(req,res)=>{
         res.status(400).json(err);
       })
     });
+
 module.exports=router

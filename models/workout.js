@@ -10,7 +10,7 @@ const workoutSchema=new Schema({
     name:{
         type:String,
         trim:true,
-        required:"this is the mame",
+        // required:"this is the mane",
     },
     duration:{
         type:Number,
