@@ -23,9 +23,10 @@ router.get("/api/workouts", (req, res) => {
 // const dbData=await db.Workout.findOne({})
 // })
 router.put("/api/workouts/:id", ( req, res) => {
-    db.Workout.findOneAndUpdate({ _id: req.params.id }, { $push: { exercises: req.body } })
+  console.log(req.body)
+    db.Workout.findOneAndUpdate({ _id: req.params.id }, { $push: { exercises: req.body } },{new:true})
       .then(dbWorkout => {
-
+console.log(dbWorkout)
         res.json(dbWorkout);
 
       })
